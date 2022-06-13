@@ -1,0 +1,21 @@
+{% layout "layout.liquid" %} {% block content %}
+<h1>{{composer.name}} songs
+</h1>
+<a href="/composers/"><button>Back to composers</button></a>
+        
+<div class="container-grid">
+    {% for song in composer.songs%}
+    <div>
+        <a href="/songs/{{forloop.index0}}">
+
+            <p>{{song.name}}
+            {{song.audio}}</p>
+            
+
+        
+        </a>
+    </div>
+    {% endfor %}
+
+
+{% endblock %}

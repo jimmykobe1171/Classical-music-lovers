@@ -3,8 +3,12 @@ const mongoose = require("./connection");
 const { Schema, model } = mongoose;
 
 const playlistSchema = new Schema({
-  song: { type: String, required: true },
-  username: String,
+  songs: [{ type: Schema.Types.ObjectId,
+    ref: "Song"}],
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
 const Playlist = model("Playlist", playlistSchema);
 

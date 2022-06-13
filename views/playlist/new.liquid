@@ -1,0 +1,16 @@
+{% layout "layout.liquid" %} {% block content %}
+      <div>
+        <article>
+          <h2>
+            My favorite songs
+          </h2>
+          <h3>{{ fruit.color }}</h3>
+          
+          <form action="/playlist/{{ song._id }}?_method=DELETE" method="POST">
+            <input type="submit" value="Delete" />
+          </form>
+          <a href="/songs/"><button>Back to Songs</button></a>
+          <a href="/composers/"><button>Back to Composers</button></a>
+        </article>
+      </div>
+{% endblock %}

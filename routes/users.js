@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/user');
+const bcrypt = require("bcryptjs");
 
-router.get('/',  function(req, res, next) {
-    res.redirect('/users/login');
+// The login Routes (Get => form, post => submit form)
+router.get("/login", (req, res) => {
+    res.render("user/login.liquid");
 });
 
 router.post("/login", async (req, res) => {
@@ -19,8 +22,8 @@ router.post("/login", async (req, res) => {
             // store some properties in the session object
             req.session.username = username;
             req.session.loggedIn = true;
-            // redirect to fruits page if successful
-            res.redirect("/composer");
+            // redirect to composers page if successful
+            res.redirect("/composers");
           } else {
             // error if password doesn't match
             res.json({ error: "password doesn't match" });
@@ -37,22 +40,16 @@ router.post("/login", async (req, res) => {
       });
   });
   
-
   router.get("/logout", (req, res) => {
     // destroy session and redirect to main page
     req.session.destroy((err) => {
       res.redirect("/");
     });
   });
-  
-
 
 // The Signup Routes (Get => form, post => submit form)
-
-
-
-
 router.post("/signup", async (req, res) => {
+    console.log(req.body)
     // encrypt password
     req.body.password = await bcrypt.hash(
       req.body.password,
@@ -62,7 +59,7 @@ router.post("/signup", async (req, res) => {
     User.create(req.body)
       .then((user) => {
         // redirect to login page
-        res.redirect("/user/login");
+        res.redirect("/users/login");
       })
       .catch((error) => {
         // send error as json
@@ -73,19 +70,6 @@ router.post("/signup", async (req, res) => {
   
 router.get("/signup", (req, res) => {
   res.render("user/signup.liquid");
-});
-
-router.post("/signup", (req, res) => {
-  res.send("signup");
-});
-
-// The login Routes (Get => form, post => submit form)
-router.get("/login", (req, res) => {
-  res.render("user/login.liquid");
-});
-
-router.post("/login", (req, res) => {
-  res.send("login");
 });
 
 //////////////////////////////////////////

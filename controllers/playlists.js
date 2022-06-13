@@ -1,9 +1,11 @@
 const Playlist = require('../models/playlist');
-
-module.exports = {
-    index,
-    show,
-    new: newPlaylist,
-    create
+const index = (req, res)=>{
+console.log('this is from playlist index controller')
+}
+ module.exports = {
+   index,
+//     show,
+//     new: newPlaylist,
+//     create
   };
   

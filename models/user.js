@@ -5,8 +5,10 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  email: { type: String, require: true, unique: true},
-  playlist: { type:String, required: true }
+  playlist: {
+    type: Schema.Types.ObjectId,
+    ref: "Playlist"
+  }
 });
 const User = model("User", userSchema);
 

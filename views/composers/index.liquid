@@ -1,0 +1,18 @@
+{% layout "layout.liquid" %} {% block content %}
+<h1>Favorite composers
+</h1>
+<div class="container-grid">
+    {% for composer in composers%}
+    <div>
+        <p><a href="/composers/{{composer._id}}">{{composer.name}}</a></p>
+        <!-- <a href="/songs/{{forloop.index0}}"> -->
+
+            
+
+        
+     <!-- </a> -->
+    </div>
+    {% endfor %}
+
+
+{% endblock %}
