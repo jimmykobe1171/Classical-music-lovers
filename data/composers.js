@@ -3,9 +3,9 @@ const Composer = require('../models/composer')
 const db = mongoose.connection
   db.on("open", () =>{
       const composersArr = [{
-          name: "W.A. Mozart",
+          name: "Wolfgang Amadeus Mozart",
           songs: [{name:"Overture to the marriage of Figaro"  , audio: "Overture-to-The-marriage-of-Figaro-K.-492.mp3"}]
-      },{name: "F.List" }
+      },{name: "F.List" },{name: "Pyotr Ilyich Tchaikovsky"}, {name:"Frédéric Chopin"}, {name:"Claude Debussy"}, {name:"Ludwig van Beethoven"}, {name:"Robert Schumann"}, {name:"Camille Saint-Saëns "}, {name:"Igor Stravinsky "}, {name:"Sergei Rachmaninov"}
       
       ]
       console.log("Connected to Mongoose")

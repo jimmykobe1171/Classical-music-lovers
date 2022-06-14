@@ -4,11 +4,11 @@ const User = require('../models/user');
 const bcrypt = require("bcryptjs");
 
 // The login Routes (Get => form, post => submit form)
-router.get("/login", (req, res) => {
+router.get("/login/", (req, res) => {
     res.render("user/login.liquid");
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login/", async (req, res) => {
     // get the data from the request body
     const { username, password } = req.body;
     // search for the user
@@ -71,8 +71,8 @@ router.post("/signup", async (req, res) => {
 router.get("/signup", (req, res) => {
   res.render("user/signup.liquid");
 });
-
-//////////////////////////////////////////
+//how to destroy the session
+//////////////////////////////
 // Export the Router
 //////////////////////////////////////////
 module.exports = router;

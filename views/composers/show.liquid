@@ -1,15 +1,19 @@
 {% layout "layout.liquid" %} {% block content %}
+<h1>Classical music lovers</h1>
+<a href="/composers"><button>Composers</button></a>
+<a href="/playlists"><button>My playlist</button></a>
+<a href="/playlists"><button>Logout</button></a>
+<a href="/"><button>Home</button></a>
 <h1>{{composer.name}} songs
 </h1>
-<a href="/composers/"><button>Back to composers</button></a>
-        
 <div class="container-grid">
+    
     {% for song in composer.songs%}
     <div>
         <a href="/songs/{{forloop.index0}}">
 
             <p>{{song.name}}
-            {{song.audio}}</p>
+         <audio src="{{song.audio}}"controls></audio></p>
             
 
         

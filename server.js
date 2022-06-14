@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
-
+app.use(express.static('public'));
 
 const userRoutes = require('./routes/users'); 
 const composerRoutes = require('./routes/composers'); 

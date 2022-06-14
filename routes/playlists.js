@@ -5,6 +5,11 @@ const playlistsCtrl = require('../controllers/playlists');
 
 router.get('/', playlistsCtrl.index);
 
+const Playlist = require('../models/playlist');
+
+// const composersCtrl = require('./controllers/composers');
+const composers = require('../data/composers.js');
+//const Song = require('../models/song');
 //router.get('/:id', playlistsCtrl.show);
 //router.post('/', playlistsCtrl.create);
 
