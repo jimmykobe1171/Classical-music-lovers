@@ -13,13 +13,13 @@
         <a href="/songs/{{forloop.index0}}">
 
             <p>{{song.name}}
-         <audio src="{{song.audio}}"controls></audio></p>
-            
+          <audio src="../../{{song.audio}}" autoplay controls type="audio/mpeg"></audio></p> 
+          {{song.audio}}
+          
 
         
         </a>
     </div>
     {% endfor %}
-
 
 {% endblock %}
