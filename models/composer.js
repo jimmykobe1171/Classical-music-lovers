@@ -12,6 +12,7 @@ const composerSchema = new Schema({
   ref: "Playlist"}]
 });
 const Composer = model("Composer", composerSchema);
-
+const Song = model("Song", songSchema)
 
 module.exports = Composer;
+//module.exports = Song;

@@ -2,7 +2,7 @@
 <h1>Classical music lovers</h1>
 <a href="/composers"><button>Composers</button></a>
 <a href="/playlists"><button>My playlist</button></a>
-<a href="/playlists"><button>Logout</button></a>
+<a href="/logout"><button>Logout</button></a>
 <a href="/"><button>Home</button></a>
 <h1>{{composer.name}} songs
 </h1>
@@ -10,15 +10,17 @@
     
     {% for song in composer.songs%}
     <div>
-        <a href="/songs/{{forloop.index0}}">
-
-            <p>{{song.name}}
-          <audio src="../../{{song.audio}}" autoplay controls type="audio/mpeg"></audio></p> 
-          {{song.audio}}
-          
-
         
-        </a>
+            <p>{{song.name}}
+                <form action="/playlists/{{song._id}}/playlist" method="POST">
+                    <input type="submit" value="Add to playlist" />
+                </form>
+                
+          <audio src="../../{{song.audio}}" autoplay controls type="audio/mpeg"></audio></p> 
+         
+    
+        
+        
     </div>
     {% endfor %}
 

@@ -8,19 +8,22 @@ const mongoose = require('mongoose')
 
 // const router = express.Router();
 const session = require("express-session");
-//const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo");
 const bcrypt = require("bcryptjs");
 const bodyParser = require('body-parser')
 const composers = require('./data/composers.js');
 ////////////////////////////////////////////
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+app.use(session({ secret: process.env.SECRET,
+    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL}),
+    saveUninitialized: true,
+    resave: false,}))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
 app.use(express.static('public'));
-
+//const logoutRoutes = require('./routes/logout')
 const userRoutes = require('./routes/users'); 
 const composerRoutes = require('./routes/composers'); 
 const songRoutes = require('./routes/songs');
@@ -32,6 +35,7 @@ app.use('/users', userRoutes);
 app.use('/composers', composerRoutes);
 app.use('/songs', songRoutes);
 app.use('/playlists', playlistRoutes);
+//app.use('/logout', logoutRoutes)
 app.get('/', function(req, res, next) {
     res.render("./index.liquid");
   });

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require("bcryptjs");
+const Playlist = require('../models/playlist');
 
 // The login Routes (Get => form, post => submit form)
 router.get("/login/", (req, res) => {
@@ -57,7 +58,8 @@ router.post("/signup", async (req, res) => {
     );
     // create the new user
     User.create(req.body)
-      .then((user) => {
+      .then((newUser) => {
+          Playlist.create({owner:newUser._id})
         // redirect to login page
         res.redirect("/users/login");
       })
@@ -73,6 +75,14 @@ router.get("/signup", (req, res) => {
 });
 //how to destroy the session
 //////////////////////////////
+
+
+
+//router.get(“/logout”, (req, res) => {
+    // destroy session and redirect to main page
+   // req.session.destroy((err) => {
+     // res.redirect(“/”);
+   ///// })
 // Export the Router
 //////////////////////////////////////////
 module.exports = router;

@@ -1,0 +1,32 @@
+{% layout "layout.liquid" %} {% block content %}
+      <div><a href="/composers"><button>Composers</button></a>
+        <a href="/playlists"><button>My playlist</button></a>
+        <a href="/logout"><button>Logout</button></a>
+        <a href="/"><button>Home</button></a>
+            
+            
+            <div class="container-grid">
+                {% for song in composer.songs%}
+                <div>
+                    <a href="/songs/{{forloop.index0}}">
+            
+                        <p>{{song.name}}
+                        {{song.audio}}</p>
+          
+                        
+                        <form action="/playlist/{{ song._id }}?_method=DELETE" method="POST">
+                            <input type="submit" value="Delete" />
+                        </form>
+                        
+                    </div>
+                    {% endblock %}
+                    
+                    <!-- <form id="add-song-to-playlist" action="/playlists/{{ playlist._id}}" method="POST">
+                      <select name="performerId">
+                        {% songs.map(p => 
+                          `<option value="${p._id}">${p.name}</option>`
+                        ).join('') %}
+                      </select>
+                      <button type="submit">Add to Playlist</button>
+                    </form>
+                       -->
